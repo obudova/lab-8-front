@@ -1,0 +1,20 @@
+<mat-table [dataSource]="dataSource">
+
+  <ng-container cdkColumnDef="name">
+    <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="description">
+    <mat-header-cell *cdkHeaderCellDef>Description</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.definition }}</mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="price">
+    <mat-header-cell *cdkHeaderCellDef>Price</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.price }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *cdkRowDef="let row; columns: displayedColumns;" (click)="handleRowClick(row)"></mat-row>
+</mat-table>
