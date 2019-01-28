@@ -13,26 +13,22 @@ export class ProductService   {
   }
 
   list() {
-    return new Promise(function(succeed, fail) {
-      var request = new XMLHttpRequest();
-      request.open("GET", apiHost + '/products', true);
-      request.addEventListener("load", function() {
-        if (request.status < 400)
-          succeed(request.response);
-        else
-          fail(new Error("Request failed: " + request.statusText));
-      });
-      request.addEventListener("error", function() {
-        fail(new Error("Network error"));
-      });
-      request.send();
-    });
+   return this.sendRequest(`${apiHost}/products`);
   }
 
   enitity(id: string): Promise<any> {
+    return this.sendRequest(`${apiHost}/products/${id}`);
+  }
+
+  search(value:string): Promise<any> {
+    return this.sendRequest(`${apiHost}/products/search/${value}`);
+  }
+
+
+  sendRequest(url: string) {
     return new Promise(function(succeed, fail) {
       var request = new XMLHttpRequest();
-      request.open("GET", `${apiHost}/products/${id}`, true);
+      request.open("GET", url, true);
       request.addEventListener("load", function() {
         if (request.status < 400)
           succeed(request.response);
