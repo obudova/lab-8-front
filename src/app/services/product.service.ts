@@ -1,44 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
 import 'rxjs/add/operator/catch';
-
-const apiHost = 'http://127.0.0.1:8087';
-
 import { RequestService } from './request.service';
+import {Observable} from 'rxjs/Observable';
+
+export const apiHost = 'http://127.0.0.1:8087';
+
 // service for fake backend
 @Injectable()
-export class ProductService   {
+export class ProductService  {
+  constructor(private requestService: RequestService) {}
 
-  constructor() {
+  list(): Observable<any> {
+   return this.requestService.request(`${apiHost}/products`);
   }
 
-  list() {
-   return this.sendRequest(`${apiHost}/products`);
+  entity(id: string): Observable<any> {
+    return this.requestService.request(`${apiHost}/products/${id}`);
   }
 
-  enitity(id: string): Promise<any> {
-    return this.sendRequest(`${apiHost}/products/${id}`);
-  }
-
-  search(value:string): Promise<any> {
-    return this.sendRequest(`${apiHost}/products/search/${value}`);
-  }
-
-
-  sendRequest(url: string) {
-    return new Promise(function(succeed, fail) {
-      var request = new XMLHttpRequest();
-      request.open("GET", url, true);
-      request.addEventListener("load", function() {
-        if (request.status < 400)
-          succeed(request.response);
-        else
-          fail(new Error("Request failed: " + request.statusText));
-      });
-      request.addEventListener("error", function() {
-        fail(new Error("Network error"));
-      });
-      request.send();
-    });
+  search(value: string): Observable<any> {
+    return this.requestService.request(`${apiHost}/products/search/${value}`);
   }
 }

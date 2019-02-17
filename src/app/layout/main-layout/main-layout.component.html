@@ -1,0 +1,29 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <h1 class="navbar-brand h1 text-white">Лабораторная работа №8</h1>
+    <nav>
+      <ul class="nav-menu">
+        <li>
+          <a [routerLink]="['/users']">Users</a>
+        </li>
+        <li>
+          <a [routerLink]="['/products']">Products</a>
+        </li>
+        <li>
+          <a [routerLink]="['/']">Customers</a>
+        </li>
+        <li>
+          <a [routerLink]="['/']">Orders</a>
+        </li>
+      </ul>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <nav class="navbar navbar-dark">
+      <a class="navbar-brand h1 text-white">{{ user }}</a>
+    </nav>
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

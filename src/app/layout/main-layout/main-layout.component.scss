@@ -1,0 +1,42 @@
+mat-sidenav {
+  width: 290px;
+  &-container {
+    height: 100vh;
+  }
+  h1 {
+    background:  #304ffe;
+    margin: 0;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    white-space: normal;
+    text-align: center;
+  }
+}
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+
+  background: #304ffe;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  margin-bottom: 64px;
+}
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 24px;
+  a {
+    display: block;
+    padding: 16px 12px;
+    padding-left: 24px;
+    transition: 300ms all ease;
+
+    &:hover{
+      text-decoration: none;
+      background: #eee;
+    }
+  }
+}
