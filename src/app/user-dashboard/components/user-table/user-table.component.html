@@ -1,0 +1,30 @@
+<mat-table [dataSource]="dataSource">
+
+  <ng-container cdkColumnDef="id">
+    <mat-header-cell *cdkHeaderCellDef>Id</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="username">
+    <mat-header-cell *cdkHeaderCellDef>Username</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.username }}</mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="name">
+    <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="date_created">
+    <mat-header-cell *cdkHeaderCellDef>Created at</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.date_created }}</mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="role_name">
+    <mat-header-cell *cdkHeaderCellDef>Role name</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row.role_name }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *cdkRowDef="let row; columns: displayedColumns;" (click)="handleRowClick(row)"></mat-row>
+</mat-table>

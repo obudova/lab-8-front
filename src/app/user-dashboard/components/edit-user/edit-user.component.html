@@ -1,0 +1,8 @@
+Edit user
+<user-form
+  [user]="data.user"
+  [roles]="data.roles"
+  [parent]="userForm">
+</user-form>
+
+<button mat-raised-button color="primary" (click)="handleAddClick()" [disabled]="userForm.invalid">Edit</button>

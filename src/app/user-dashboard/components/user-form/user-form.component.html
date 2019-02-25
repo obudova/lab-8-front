@@ -1,0 +1,22 @@
+<form [formGroup]="parent">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+    <mat-error *ngIf="parent.get('name')?.invalid">Name is required field</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Username" formControlName="username">
+    <!--<mat-error *ngIf="parent.get('surname')?.invalid">Surname is required field</mat-error>-->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" formControlName="password">
+    <!--<mat-error *ngIf="parent.get('email')?.invalid ">Enter a valid email</mat-error>-->
+  </mat-form-field>
+
+  <mat-radio-group class="example-radio-group" formControlName="role_id">
+    <mat-radio-button class="example-radio-button" *ngFor="let role of roles" [value]="role.id">
+      {{role.name}}
+    </mat-radio-button>
+  </mat-radio-group>
+</form>

@@ -5,21 +5,21 @@ import {Observable} from 'rxjs/Observable';
 import {apiHost} from './product.service';
 
 @Injectable()
-export class UserService  {
+export class OrderService {
   constructor(private requestService: RequestService) {}
 
   list(): Observable<any> {
-    return this.requestService.request(`${apiHost}/users`);
+    return this.requestService.request(`${apiHost}/orders`);
   }
 
   create(entity): Observable<any> {
-    return this.requestService.request(`${apiHost}/users`, 'POST', {
+    return this.requestService.request(`${apiHost}/orders`, 'POST', {
       data: entity
     });
   }
 
   update(entity): Observable<any> {
-    return this.requestService.request(`${apiHost}/users/${entity.id}`, 'PUT', {
+    return this.requestService.request(`${apiHost}/orders/${entity.id}`, 'PUT', {
       data: entity
     });
   }
